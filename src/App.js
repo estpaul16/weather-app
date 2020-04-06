@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import FindLocation from './components/FindLocation';
 import Weather from './components/Weather';
 import Axios from 'axios';
+import './style/style.css';
 
 const openWeatherApiKey = process.env.REACT_APP_OPENWEATHER_API_KEY;
 
 const App = () => {
     // data from google places api
-    const [ selectedCity, setSelectedCity ] = useState('initial');
+    const [ selectedCity, setSelectedCity ] = useState('');
     const [ selectedLong, setSelectedLong ] = useState('');
     const [ selectedLat, setSelectedLat ] = useState('');
 
@@ -47,7 +48,7 @@ const App = () => {
                 setRealFeel(kelvinsToFahrenheit(temps.feels_like));
                 setMinTemp(kelvinsToFahrenheit(temps.temp_min));
                 setMaxTemp(kelvinsToFahrenheit(temps.temp_max));
-                if (selectedCity === 'initial') {
+                if (selectedCity === '') {
                     setSelectedCity(response.data.name);
                 }
             });
@@ -72,7 +73,8 @@ const App = () => {
     return (
         <div className='App'>
             <div className='container'>
-                <div className='header'>
+                <div className='header'>{/* icon */}</div>
+                <div className='content'>
                     <Weather
                         city={selectedCity}
                         temp={currentTemp}
