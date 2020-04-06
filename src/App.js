@@ -20,6 +20,7 @@ const App = () => {
     const [ forecast, setForecast ] = useState([]); // for later
     const [ isInitialRender, setIsInitialRender ] = useState(true);
 
+    // Asks user for access to their location on initialization
     useEffect(() => {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((position) => {
@@ -32,7 +33,8 @@ const App = () => {
 
     useEffect(
         () => {
-            // If the page is being rendered for the first time we don't want to make a fetch call
+            // If the page is being rendered for the first time and we don't have
+            // access to the user's location, we don't want to make a fetch call
             if (isInitialRender) return;
             Axios.get(
                 `http://api.openweathermap.org/data/2.5/weather?lat=${selectedLat}&lon=${selectedLong}&appid=${openWeatherApiKey}`
@@ -69,15 +71,19 @@ const App = () => {
 
     return (
         <div className='App'>
-            <Weather
-                city={selectedCity}
-                temp={currentTemp}
-                minTemp={minTemp}
-                maxTemp={maxTemp}
-                realFeel={realFeel}
-                description={weatherDescription}
-            />
-            <FindLocation updateCity={updateCity} />
+            <div className='container'>
+                <div className='header'>
+                    <Weather
+                        city={selectedCity}
+                        temp={currentTemp}
+                        minTemp={minTemp}
+                        maxTemp={maxTemp}
+                        realFeel={realFeel}
+                        description={weatherDescription}
+                    />
+                    <FindLocation updateCity={updateCity} />
+                </div>
+            </div>
         </div>
     );
 };
