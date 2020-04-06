@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Weather = (props) => {
+
     return (
         <React.Fragment>
             <div className='general-information'>
@@ -9,13 +10,13 @@ const Weather = (props) => {
             </div>
             <div className='detail-section'>
                 <div className='temps'>
-                    <h2 id='temp'>{props.temp}&deg;</h2>
+                    {props.temp !== "" ? (<h2 id='temp'>{props.temp}&deg;</h2>): null}
                     <div className="min-max">
-                        <h5>{props.minTemp}&deg;</h5>
-                        <h5>{props.maxTemp}&deg;</h5>
+                        {props.temp !== "" ? (<h5>{props.minTemp}&deg;</h5>) : null}
+                        {props.temp !== "" ? (<h5>{props.maxTemp}&deg;</h5>) : null}
                     </div>
                 </div>
-                <h4 id='real-feel'>RealFeel {props.realFeel}&deg;</h4>
+                {props.temp !== "" ? (<h4 id='real-feel'>RealFeel {props.realFeel}&deg;</h4>) : null}
             </div>
         </React.Fragment>
     );
