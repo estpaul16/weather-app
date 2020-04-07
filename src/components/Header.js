@@ -2,19 +2,17 @@ import React, { useState } from 'react';
 import ReactAnimatedWeather from 'react-animated-weather';
 import '../style/style.css';
 
-
-// const defaults = {
-//   icon: 'CLEAR_DAY',
-// animate: true,
-//   size: 64,
-//   color: 'black'
-// };
+const iconSettings = {
+    animate : true,
+    size    : 100,
+    color   : 'black'
+};
 
 const Header = (props) => {
     const getIcon = (rangeId) => {
         switch (true) {
             case rangeId >= 200 && rangeId <= 531:
-                return 'RAIN'
+                return 'RAIN';
             case rangeId >= 611 && rangeId <= 613:
                 return 'SLEET';
             case rangeId >= 600 && rangeId <= 622:
@@ -35,7 +33,7 @@ const Header = (props) => {
     return (
         <div className='header'>
             <div className='icon-container'>
-                <ReactAnimatedWeather icon={getIcon(props.iconId)} color='gold'/>
+                <ReactAnimatedWeather icon={getIcon(props.iconId)} color='black' size={100} />
             </div>
         </div>
     );

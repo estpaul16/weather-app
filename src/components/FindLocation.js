@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
+import '../style/style.css';
 
 // Import React Script Library to load Google object
 import Script from 'react-load-script';
 
 const FindLocation = (props) => {
-
     const handleScriptLoad = () => {
         // Declare Options For Autocomplete
         const options = { types: [ '(cities)' ] };
@@ -35,7 +35,9 @@ const FindLocation = (props) => {
                 url='https://maps.googleapis.com/maps/api/js?key=AIzaSyCLBAzecKt6edxdHOZcxmXQjlCtPsVAd-Y&libraries=places'
                 onLoad={handleScriptLoad}
             />
-            <input type='text' id='autocomplete' placeholder='Search City' defaultValue={''} />
+            <div className='autocomplete-container'>
+                <input type='text' id='autocomplete' placeholder='Search City' defaultValue={''} />
+            </div>
         </div>
     );
 };

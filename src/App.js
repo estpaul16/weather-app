@@ -51,7 +51,7 @@ const App = () => {
                 setRealFeel(kelvinsToFahrenheit(temps.feels_like));
                 setMinTemp(kelvinsToFahrenheit(temps.temp_min));
                 setMaxTemp(kelvinsToFahrenheit(temps.temp_max));
-                setIconCode(weather.icon);
+                setIconCode(weather.id);
                 if (selectedCity === '') {
                     setSelectedCity(response.data.name);
                 }
