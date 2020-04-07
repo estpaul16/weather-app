@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import FindLocation from './components/FindLocation';
 import Weather from './components/Weather';
+import Header from './components/Header';
 import Axios from 'axios';
+import ReactAnimatedWeather from 'react-animated-weather';
 import './style/style.css';
 
 const openWeatherApiKey = process.env.REACT_APP_OPENWEATHER_API_KEY;
@@ -19,6 +21,7 @@ const App = () => {
     const [ maxTemp, setMaxTemp ] = useState('');
     const [ weatherDescription, setWeatherDiscription ] = useState('');
     const [ forecast, setForecast ] = useState([]); // for later
+    const [ iconCode, setIconCode ] = useState('');
     const [ isInitialRender, setIsInitialRender ] = useState(true);
 
     // Asks user for access to their location on initialization
@@ -48,6 +51,7 @@ const App = () => {
                 setRealFeel(kelvinsToFahrenheit(temps.feels_like));
                 setMinTemp(kelvinsToFahrenheit(temps.temp_min));
                 setMaxTemp(kelvinsToFahrenheit(temps.temp_max));
+                setIconCode(weather.icon);
                 if (selectedCity === '') {
                     setSelectedCity(response.data.name);
                 }
@@ -73,7 +77,7 @@ const App = () => {
     return (
         <div className='App'>
             <div className='container'>
-                <div className='header'>{/* icon */}</div>
+                <Header iconId={iconCode}/>
                 <div className='content'>
                     <Weather
                         city={selectedCity}
@@ -82,6 +86,7 @@ const App = () => {
                         maxTemp={maxTemp}
                         realFeel={realFeel}
                         description={weatherDescription}
+                        iconCode={iconCode}
                     />
                     <FindLocation updateCity={updateCity} />
                 </div>
