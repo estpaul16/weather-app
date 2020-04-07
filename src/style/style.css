@@ -43,7 +43,7 @@ body {
     box-shadow: 0 5px 10px black;
     border-radius: 5px;
     height: fit-content;
-    transform: scale(.8);
+    transform: scale(.75);
 }
 
 .icon-container {
@@ -71,6 +71,7 @@ body {
 #description {
     font-size: 3rem;
     font-weight: bold;
+    color: blue;
 }
 
 #location {
@@ -105,7 +106,7 @@ body {
 
 .min-max{
     display: flex;
-    font-size: 1rem;
+    font-size: 1.2rem;
     flex-direction: column;
     padding-left: 5px;
     border-left-style: solid;
