@@ -43,6 +43,7 @@ body {
     box-shadow: 0 5px 10px black;
     border-radius: 5px;
     height: fit-content;
+    transform: scale(.8);
 }
 
 .icon-container {
@@ -142,7 +143,7 @@ body {
     display: none;
 }
 .pac-item-query{
-    font-size: 2rem;
+    font-size: 1.5rem;
     padding-right: 14px;
 }
 
