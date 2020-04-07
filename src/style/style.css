@@ -31,6 +31,9 @@ body {
     align-items: flex-end;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+    border-bottom-style: solid ;
+    border-bottom-width: 5px;
+    border-bottom-color: yellow;
 }
 
 .container {
@@ -53,6 +56,7 @@ body {
     width: 140px;
     height: 140px;
     border-radius: 50%;
+    border-color: yellow;
 }
 
 .general-information {
