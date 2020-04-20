@@ -41,17 +41,17 @@ const App = () => {
             // access to the user's location, we don't want to make a fetch call
             if (isInitialRender) return;
             Axios.get(
-                `http://api.openweathermap.org/data/2.5/weather?lat=${selectedLat}&lon=${selectedLong}&appid=${openWeatherApiKey}`
+                `https://api.openweathermap.org/data/2.5/weather?lat=${selectedLat}&lon=${selectedLong}&appid=${openWeatherApiKey}`
             ).then((response) => {
                 const weather = response.data.weather[0];
                 const temps = response.data.main;
-                console.log(response);
                 setWeatherDiscription(weather.description);
                 setCurrentTemp(kelvinsToFahrenheit(temps.temp));
                 setRealFeel(kelvinsToFahrenheit(temps.feels_like));
                 setMinTemp(kelvinsToFahrenheit(temps.temp_min));
                 setMaxTemp(kelvinsToFahrenheit(temps.temp_max));
                 setIconCode(weather.id);
+                // If our current coordinates are from geolocation, we don't have name from Autocomplete
                 if (selectedCity === '') {
                     setSelectedCity(response.data.name);
                 }
@@ -77,7 +77,7 @@ const App = () => {
     return (
         <div className='App'>
             <div className='container'>
-                <Header iconId={iconCode}/>
+                <Header iconId={iconCode} />
                 <div className='content'>
                     <Weather
                         city={selectedCity}

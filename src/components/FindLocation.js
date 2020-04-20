@@ -14,9 +14,9 @@ const FindLocation = (props) => {
         const autocomplete = new google.maps.places.Autocomplete(document.getElementById('autocomplete'), options);
 
         // Avoid paying for data that you don't need by restricting the
-        // set of place fields that are returned to just the address
-        // components and formatted address
-        autocomplete.setFields([ 'address_components', 'formatted_address', 'geometry' ]);
+        // set of place fields that are returned to just the formatted address
+        // and geometry (lat and long)
+        autocomplete.setFields([ 'formatted_address', 'geometry' ]);
 
         // Fire Event when a suggested name is selected
         autocomplete.addListener('place_changed', () => {
